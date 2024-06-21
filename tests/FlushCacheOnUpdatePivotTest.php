@@ -22,9 +22,9 @@ class FlushCacheOnUpdatePivotTest extends TestCase
         $this->assertNull($cache);
         $this->assertEquals(0, $storedRoles->count());
 
-        $user->roles()->attach($role->id);
+        $user->roles()->attach($role);
 
-        $storedRoles = $user->roles()->cacheFor(now()->addHours(1))->cacheTags(["user:{$user->id}:roles"])->get();
+        $storedRoles = $user->roles()->cacheFor(now()->addHour())->cacheTags(["user:{$user->id}:roles"])->get();
 
         $this->assertEquals(
             $role->id,
@@ -33,7 +33,7 @@ class FlushCacheOnUpdatePivotTest extends TestCase
 
         $user->roles()->detach($role->id);
 
-        $storedRoles = $user->roles()->cacheFor(now()->addHours(1))->cacheTags(["user:{$user->id}:roles"])->get();
+        $storedRoles = $user->roles()->cacheFor(now()->addHour())->cacheTags(["user:{$user->id}:roles"])->get();
 
         $this->assertEquals(0, $storedRoles->count());
     }
