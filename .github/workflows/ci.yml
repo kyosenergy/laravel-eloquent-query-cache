@@ -56,7 +56,8 @@ jobs:
 
     - name: Run tests
       run: |
-        chmod -R 777 storage bootstrap/cache
+        ls -al
+        # chmod -R 777 storage bootstrap/cache
         CACHE_DRIVER=array vendor/bin/phpunit --coverage-text --coverage-clover=coverage_array.xml
         CACHE_DRIVER=file vendor/bin/phpunit --coverage-text --coverage-clover=coverage_file.xml
 
