@@ -23,7 +23,7 @@ jobs:
           - 10.*
           - 11.*
         prefer:
-          - 'prefer-lowest'
+          # - 'prefer-lowest'
           - 'prefer-stable'
         include:
           - laravel: 10.*
