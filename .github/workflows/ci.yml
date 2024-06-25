@@ -23,7 +23,7 @@ jobs:
           - 10.*
           - 11.*
         prefer:
-          # - 'prefer-lowest'
+          - 'prefer-lowest'
           - 'prefer-stable'
         include:
           - laravel: 10.*
@@ -56,10 +56,8 @@ jobs:
 
     - name: Run tests
       run: |
-        ls -al
-        # chmod -R 777 storage bootstrap/cache
-        CACHE_DRIVER=array vendor/bin/phpunit --coverage-text --coverage-clover=coverage_array.xml
-        CACHE_DRIVER=file vendor/bin/phpunit --coverage-text --coverage-clover=coverage_file.xml
+        CACHE_STORE=array CACHE_DRIVER=array vendor/bin/phpunit --coverage-text --coverage-clover=coverage_array.xml
+        CACHE_STORE=file CACHE_DRIVER=file vendor/bin/phpunit --coverage-text --coverage-clover=coverage_file.xml
 
     - uses: codecov/codecov-action@v4.5.0
       with:
