@@ -34,7 +34,7 @@ jobs:
     name: PHP ${{ matrix.php }} - Laravel ${{ matrix.laravel }} --${{ matrix.prefer }}
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
@@ -43,7 +43,7 @@ jobs:
         extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv
         coverage: pcov
 
-    - uses: actions/cache@v3.0.11
+    - uses: actions/cache@v4
       name: Cache dependencies
       with:
         path: ~/.composer/cache/files
@@ -58,8 +58,3 @@ jobs:
       run: |
         CACHE_STORE=array CACHE_DRIVER=array vendor/bin/phpunit --coverage-text --coverage-clover=coverage_array.xml
         CACHE_STORE=file CACHE_DRIVER=file vendor/bin/phpunit --coverage-text --coverage-clover=coverage_file.xml
-
-    - uses: codecov/codecov-action@v4.5.0
-      with:
-        fail_ci_if_error: false
-        file: '*.xml'
