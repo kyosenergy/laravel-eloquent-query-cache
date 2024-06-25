@@ -37,7 +37,7 @@
         "test": "vendor/bin/phpunit"
     },
     "require-dev": {
-        "chelout/laravel-relationship-events": "^3.0",
+        "chelout/laravel-relationship-events": "^2.0|^3.0",
         "laravel/legacy-factories": "^1.4",
         "livewire/livewire": "dev-main",
         "mockery/mockery": "^1.6",
